@@ -9,7 +9,8 @@
   <link href='http://fonts.googleapis.com/css?family=Patua+One' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="http://thewebrocks.com/demos/html5catcher/css/playingfield.css" type="text/css">
   <link rel="stylesheet" href="http://thewebrocks.com/demos/html5catcher/css/textstyles.css" type="text/css">
- 
+   <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 </head>
 <body>
   <header><h1></h1></header>
@@ -17,7 +18,7 @@
 
   <section id="intro">
       <h1><span>HTML5 </span>Catcher</h1>
-      <p>A quick game catching all the HTML5 goodies.</p>
+      <p>A quick game catching all the HTML5 goodies. Mobile support</p>
       <ul>
         <li>Last score: <output></output></li>
         <li>High score: <output></output></li>
@@ -204,7 +205,14 @@ container.addEventListener( 'touchend', ontouchend, false );
 container.addEventListener( 'click', onclick, false );
 container.addEventListener( 'mousemove', onmousemove, false );
 window.addEventListener( 'deviceorientation', tilt, false );
-
+$(function(){
+  container.on("swipeleft",function(){
+    onkeydown();
+  });
+ container.on("swipeRight",function(){
+    onkeyup();
+  });
+});
 /* Get the game score, or preset it when there isn't any */debugger;
 
 
