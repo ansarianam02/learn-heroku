@@ -1,21 +1,740 @@
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learn Heroku - Hello World!</title>
-  </head>
-  <body>
-    <h1>Hello World!</h1>
-<style>
-h1 {
-  color: teal;
-  border: 3px teal solid;
-  font-size: 6em;
-  padding: 1em;
-  margin: 0.5em;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HTML5 Catcher</title>
+  <meta type="description" content="HTML5 catcher is a simple game to catch falling elements. You can use the keyboard, move the mouse or tilt your phone or tablet to move left and right">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"> 
+  <link href='http://fonts.googleapis.com/css?family=Patua+One' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="http://thewebrocks.com/demos/html5catcher/css/playingfield.css" type="text/css">
+  <link rel="stylesheet" href="http://thewebrocks.com/demos/html5catcher/css/textstyles.css" type="text/css">
+ 
+</head>
+<body>
+  <header><h1></h1></header>
+  <div id="container">
+
+  <section id="intro">
+      <h1><span>HTML5 </span>Catcher</h1>
+      <p>A quick game catching all the HTML5 goodies.</p>
+      <ul>
+        <li>Last score: <output></output></li>
+        <li>High score: <output></output></li>
+        <li><button id="instructionbutton">Instructions</button></li>
+        <li><button id="playbutton">Play</button></li>
+      </ul>
+  </section>
+
+  <section id="instructions">
+    <ul id="characters" data-countstart="2" data-newsprite="500">
+      <li class="introdeck">
+        <h2>You are HTML5:</h2>
+        <img src="http://thewebrocks.com/demos/html5catcher/img/shield.png" width="72" height="100" id="player" 
+             data-increase="5">
+        <p>Your job is to catch as many of your components as you can.</p>
+        <p>You can use the cursor keys or move the mouse on the playfield <span id="orientation">- or simply tilt your mobile or tablet</span>.</p>
+        <p>Failing to catch your components or catching wrong ones costs energy. The game is over when you are out of energy.</p>
+        <p><button class="next">More</button></p>
+      </li>
+
+      <li class="introdeck">
+        <h2>The great components</h2>
+        <p>Each are worth 20 energy points that you can win or lose.</p>
+        <ul>
+          <li><img src="img/collect/gr1.png" class="sprite" alt="Video"
+                   data-collision="energy:20" data-type="good"></li>
+          <li><img src="img/collect/gr2.png" class="sprite" alt="Audio"
+                   data-collision="energy:20" data-type="good"></li>
+          <li><img src="img/collect/gr3.png" class="sprite" alt="Canvas"
+                   data-collision="energy:20" data-type="good"></li>
+        </ul>
+        <h2>The good components</h2>
+        <p>Each are worth 10 energy points that you can win or lose.</p>
+        <ul>
+          <li><img src="img/collect/go1.png" class="sprite" 
+                   alt="Semantic Markup" data-collision="energy:10"
+                   data-type="good"></li>
+          <li><img src="img/collect/go2.png" class="sprite" alt="History"
+                   data-collision="energy:10" data-type="good"></li>
+        </ul>
+        <p><button class="next">More</button></p>
+      </li>
+
+      <li class="introdeck">
+        <h2>The lesser known components</h2>
+        <p>These are also your components. Each are worth 5 energy points that you can win or lose.</p>
+        <ul>
+          <li><img src="img/collect/ok1.png" class="sprite" 
+                   alt="Drag and Drop" data-collision="energy:5"
+                   data-type="good"></li>
+          <li><img src="img/collect/ok2.png" class="sprite" alt="Menus"
+                   data-collision="energy:5" data-type="good"></li>
+        </ul>
+        <h2>Not your components</h2>
+        <p>These are really not what you are. Catching each will cost you 20 energy points.</p>
+       <!--  <ul>
+          <li><img src="img/collect/dn1.png" class="sprite" alt="Flash"
+                   data-collision="energy:-20" data-type="bad"></li>
+          <li><img src="img/collect/dn2.png" class="sprite" alt="jQuery"
+                  data-collision="energy:-20" data-type="bad"></li>
+          <li><img src="img/collect/dn3.png" class="sprite" alt="CSS"
+                  data-collision="energy:-20" data-type="bad"></li>
+        </ul> -->
+        <p><button class="next">More</button></p>
+      </li>
+
+      <li class="introdeck">
+        <h2>Related, but not you</h2>
+        <p>These are not yours either. Catching each will cost you 10 energy points.</p>
+       <!--  <ul>
+          <li><img src="img/collect/bad1.png" class="sprite" alt="WebGL"
+                   data-collision="energy:-10" data-type="bad"></li>
+          <li><img src="img/collect/bad2.png" class="sprite" 
+                   alt="Media queries" data-collision="energy:-10"
+                   data-type="bad"></li>
+          <li><img src="img/collect/bad3.png" class="sprite" alt="File API"
+                   data-collision="energy:-10" data-type="bad"></li>
+          <li><img src="img/collect/bad4.png" class="sprite" alt="SVG"
+                   data-collision="energy:-10" data-type="bad"></li>
+          <li><img src="img/collect/bad5.png" class="sprite" 
+                   alt="Geolocation" data-collision="energy:-10"
+                   data-type="bad"></li>
+        </ul> -->
+        <p><button class="endinstructions">Back to menu</button></p>
+      </li>
+
+    </ul>
+  </section>
+
+  <section id="playfield">
+    <div id="scoresinfo">
+    <div id="energy">Energy <output>100</output></div>
+    <div id="score">Score <output></output></div>
+    </div>
+    <canvas></canvas>
+  </section>
+
+  <section id="gameover">
+    <header><h1>Game over!</h1></header>
+    <p>Your score: <output></output></p>
+    <p class="message" data-highscore="New highscore!"></p>
+    <p><button id="replay">Play again</button></p>
+  </section>
+
+  <ul id="androidbrowsersucks">
+    <li><button class="left"> </button></li>
+    <li><button class="right"> </button></li>
+  </ul>
+</div>
+<footer>
+</footer>
+
+<script type='text/javascript'>
+(function(){
+
+/* DOM elements */
+var container = $( '#container' ),
+field = $( '#playfield' ),
+player = $( '#player' ),
+intro = $( '#intro' ),
+instructions = $( '#instructions' ),
+leftbutton = $( '.left' ),
+rightbutton = $( '.right' ),
+scoredisplay = $( '#score output' ),
+energydisplay = $( '#energy output' ),
+canvas = $( 'canvas' ),
+over = $( '#gameover' ),
+overmsg = over.querySelector( '.message' ),
+characters = document.querySelectorAll( 'li.introdeck' ),
+c = canvas.getContext( '2d' ),
+startenergy = +energydisplay.innerHTML;
+
+/* Game data */
+var scores = {
+energy: startenergy
+},
+playerincrease = +player.getAttribute( 'data-increase' );
+
+/* counters, etc */
+var score = 0, gamestate = null, x = 0, sprites = [], allsprites = [],
+spritecount = 0, now = 0, old = null, playerY = 0, offset = 0,
+width = 0, height = 0, levelincrease = 0, i=0 , storedscores = null,
+initsprites = 0, newsprite = 500, rightdown = false, leftdown = false;
+/*
+Setting up the game
+*/
+
+function init() {
+var current, sprdata, scoreinfo, i, j;
+
+/* retrieve sprite data from HTML */
+sprdata = document.querySelectorAll( 'img.sprite' );
+i = sprdata.length;
+while (i--) {
+current = {};
+current.effects = [];
+current.img = sprdata[ i ];
+current.offset = sprdata[ i ].offsetWidth / 2;
+scoreinfo = sprdata[ i ].getAttribute( 'data-collision' ).split(',');
+j = scoreinfo.length;
+while ( j-- ) {
+var keyval = scoreinfo[ j ].split( ':' );
+current.effects.push( {
+effect: keyval[ 0 ],
+value: keyval[ 1 ]
+} );
+}
+current.type = sprdata[ i ].getAttribute ('data-type');
+allsprites.push( current );
+}
+spritecount = allsprites.length;
+initsprites = +$( '#characters' ).getAttribute( 'data-countstart' );
+newsprite = +$( '#characters' ).getAttribute( 'data-newsprite' );
+
+/* make game keyboard enabled */
+container.tabIndex = -1;
+container.focus();
+
+/* Assign event handlers */
+container.addEventListener( 'keydown', onkeydown, false );
+container.addEventListener( 'keyup', onkeyup, false );
+container.addEventListener( 'touchstart', ontouchstart, false );
+container.addEventListener( 'touchend', ontouchend, false );
+container.addEventListener( 'click', onclick, false );
+container.addEventListener( 'mousemove', onmousemove, false );
+window.addEventListener( 'deviceorientation', tilt, false );
+
+/* Get the game score, or preset it when there isn't any */debugger;
+
+
+if( localStorage!=null && localStorage.html5catcher ) {
+storedscores = JSON.parse( localStorage.html5catcher );
+} else {
+  var localStorage = {};
+storedscores = { last: 0, high: 0 };
+localStorage.html5catcher = JSON.stringify( storedscores );
+}
+
+/* show the intro */
+showintro();
+
+/*
+As the android browser has no deviceorientation, I added links
+that don't work quite well :( For better mobile browsers,
+you can tilt the phone - Firefox for example.
+*/
+if( 'ondeviceorientation' in window ) {
+$( '#androidbrowsersucks' ).style.display = 'none';
+}
+
+};
+
+/* Event Handlers */
+
+/* Click handling */
+function onclick( ev ) {
+var t = ev.target;
+if ( gamestate === 'gameover' ) {
+if ( t.id === 'replay' ) { showintro(); }
+}
+if ( t.className === 'next' ) { instructionsnext(); }
+if ( t.className === 'endinstructions' ) { instructionsdone(); }
+if ( t.id === 'instructionbutton' ) { showinstructions(); }
+if ( t.id === 'playbutton' ) { startgame(); }
+ev.preventDefault();
+}
+
+/* Keyboard handling */
+function onkeydown( ev ) {
+if ( ev.keyCode === 39 ) { rightdown = true; }
+else if ( ev.keyCode === 37 ) { leftdown = true; }
+}
+function onkeyup( ev ) {
+if ( ev.keyCode === 39 ) { rightdown = false; }
+else if ( ev.keyCode === 37 ) { leftdown = false; }
+}
+
+/* Touch handling */
+function ontouchstart( ev ) {
+if ( gamestate === 'playing' ) { ev.preventDefault(); }
+if ( ev.target === rightbutton ) { rightdown = true; }
+else if ( ev.target === leftbutton ) { leftdown = true; }
+}
+function ontouchend( ev ) {
+if ( gamestate === 'playing' ) { ev.preventDefault(); }
+if ( ev.target === rightbutton ) { rightdown = false; }
+else if ( ev.target === leftbutton ) { leftdown = false; }
+}
+
+/* Orientation handling */
+function tilt (ev) {
+if(ev.gamma < 0) { x = x - 2; }
+if(ev.gamma > 0) { x = x + 2; }
+if ( x < offset ) { x = offset; }
+if ( x > width-offset ) { x = width-offset; }
+}
+
+/* Mouse handling */
+function onmousemove ( ev ) {
+var mx = ev.clientX - container.offsetLeft;
+if ( mx < offset ) { mx = offset; }
+if ( mx > width-offset ) { mx = width-offset; }
+x = mx;
+}
+
+/*
+Introduction
+*/
+function showintro() {
+setcurrent( intro );
+gamestate = 'intro';
+var scoreelms = intro.querySelectorAll( 'output' );
+scoreelms[ 0 ].innerHTML = storedscores.last;
+scoreelms[ 1 ].innerHTML = storedscores.high;
+}
+
+/*
+Instructions
+*/
+function showinstructions() {
+setcurrent( instructions );
+gamestate = 'instructions';
+now = 0;
+characters[ now ].className = 'current';
+}
+
+/* action when left is activated */
+function instructionsdone() {
+characters[ now ].className = 'introdeck';
+now = 0;
+showintro();
+}
+
+/* action when right is activated */
+function instructionsnext() {
+if ( characters[ now + 1 ] ) {
+now = now + 1;
+}
+if ( characters[ now ] ) {
+characters[ now - 1 ].className = 'introdeck';
+characters[ now ].className = 'current';
+}
+}
+
+/*
+Start the game
+*/
+function startgame() {
+setcurrent( field );
+gamestate = 'playing';
+document.body.className = 'playing';
+width = field.offsetWidth;
+height = field.offsetHeight;
+canvas.width = width;
+canvas.height = height;
+playerY = height - player.offsetHeight;
+offset = player.offsetWidth / 2;
+x = width / 2;
+sprites = [];
+
+for ( i = 0; i < initsprites; i++ ) {
+sprites.push( addsprite() );
+}
+scores.energy = startenergy;
+levelincrease = 0;
+score = 0;
+energydisplay.innerHTML = startenergy;
+loop();
+}
+
+/*
+The main game loop
+*/
+function loop() {
+c.clearRect( 0, 0, width, height );
+
+/* render and update sprites */
+j = sprites.length;
+for ( i=0; i < j ; i++ ) {
+sprites[ i ].render();
+sprites[ i ].update();
+}
+
+/* show scores */
+energydisplay.innerHTML = scores.energy;
+scoredisplay.innerHTML = ~~(score/10);
+score++;
+
+/* with increasing score, add more sprites */
+if ( ~~(score/newsprite) > levelincrease ) {
+sprites.push( addsprite() );
+levelincrease++;
+}
+
+/* position player*/
+if( rightdown ) { playerright(); }
+if( leftdown ) { playerleft(); }
+
+c.save();
+c.translate( x-offset, playerY );
+c.drawImage( player, 0, 0 );
+c.restore();
+
+/* when you still have energy, render next, else game over */
+scores.energy = Math.min( scores.energy, 100 );
+if ( scores.energy > 0 ) {
+requestAnimationFrame( loop );
+} else {
+gameover();
+}
+};
+
+/* action when left is activated */
+function playerleft() {
+x -= playerincrease;
+if (x < offset) { x = offset; }
+}
+
+/* action when left is activated */
+function playerright() {
+x += playerincrease;
+if (x > width - offset) { x = width - offset; }
+}
+
+/*
+Game over
+*/
+function gameover() {
+document.body.className = 'gameover';
+setcurrent( over );
+gamestate = 'gameover';
+var nowscore = ~~(score/10);
+over.querySelector( 'output' ).innerHTML = nowscore;
+storedscores.last = nowscore;
+if ( nowscore > storedscores.high ) {
+overmsg.innerHTML = overmsg.getAttribute('data-highscore');
+storedscores.high = nowscore;
+}
+localStorage.html5catcher = JSON.stringify(storedscores);
+}
+
+/*
+Helper methods
+*/
+
+/* Particle system */
+function sprite() {
+this.px = 0;
+this.py = 0;
+this.vx = 0;
+this.vy = 0;
+this.goodguy = false;
+this.height = 0;
+this.width = 0;
+this.effects = [];
+this.img = null;
+this.update = function() {
+this.px += this.vx;
+this.py += this.vy;
+if ( ~~(this.py + 10) > playerY ) {
+if ( (x - offset) < this.px && this.px < (x + offset) ) {
+this.py = -200;
+i = this.effects.length;
+while ( i-- ) {
+scores[ this.effects[ i ].effect ] += +this.effects[ i ].value;
+}
+}
+}
+if ( this.px > (width - this.offset) || this.px < this.offset ) {
+this.vx = -this.vx;
+}
+if ( this.py > height + 100 ) {
+if ( this.type === 'good' ) {
+i = this.effects.length;
+while ( i-- ) {
+scores[ this.effects[ i ].effect ] -= +this.effects[ i ].value;
+}
+}
+setspritedata( this );
+}
+};
+this.render = function() {
+c.save();
+c.translate( this.px, this.py );
+c.translate( this.width * -0.5, this.height * -0.5 );
+c.drawImage( this.img, 0, 0) ;
+c.restore();
+};
+};
+
+function addsprite() {
+var s = new sprite();
+setspritedata( s );
+return s;
+};
+
+function setspritedata( sprite ) {
+var r = ~~rand( 0, spritecount );
+sprite.img = allsprites[ r ].img;
+sprite.height = sprite.img.offsetHeight;
+sprite.width = sprite.img.offsetWidth;
+sprite.type = allsprites[ r ].type;
+sprite.effects = allsprites[ r ].effects;
+sprite.offset = allsprites[ r ].offset;
+sprite.py = -100;
+sprite.px = rand( sprite.width / 2, width - sprite.width / 2 );
+sprite.vx = rand( -1, 2 );
+sprite.vy = rand( 1, 5 );
+};
+
+/* yeah, yeah... */
+function $( str ) {
+return document.querySelector( str );
+};
+
+/* Get a random number between min and max */
+function rand( min, max ) {
+return ( (Math.random() * (max-min)) + min );
+};
+
+/* Show the current part of the game and hide the old one */
+function setcurrent(elm) {
+if (old) { old.className = ''; }
+elm.className = 'current';
+old = elm;
+};
+
+/* Detect and set requestAnimationFrame */
+if ( !window.requestAnimationFrame ) {
+window.requestAnimationFrame = (function() {
+return window.webkitRequestAnimationFrame ||
+window.mozRequestAnimationFrame ||
+window.oRequestAnimationFrame ||
+window.msRequestAnimationFrame ||
+function( callback, element ) {
+window.setTimeout( callback, 1000 / 60 );
+};
+})();
+}
+
+/* off to the races */
+init();
+})();
+
+</script>
+<style type="text/css">
+  ody {
+  font-size: 20px;
+  font-family: "Patua One", calibri, arial, sans-serif;
+  background: #000;
+}
+#characters{
+  font-size: 15px;
+}
+h1 {font-size: 30px;}
+h2 {font-size: 24px; margin-bottom: 10px;}
+#container {
+  background: #a7cfdf; 
+  background: -moz-linear-gradient(top,  #a7cfdf 0%, #23538a 100%); 
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a7cfdf), color-stop(100%,#23538a)); 
+  background: -webkit-linear-gradient(top,  #a7cfdf 0%,#23538a 100%); 
+  background: -o-linear-gradient(top,  #a7cfdf 0%,#23538a 100%); 
+  background: -ms-linear-gradient(top,  #a7cfdf 0%,#23538a 100%); 
+  background: linear-gradient(top,  #a7cfdf 0%,#23538a 100%);   
+  outline: 0;
+}
+#intro h1 span {
+  text-indent: -2000px;
+  background: url(img/shield.png) no-repeat center 20px;
+  height: 130px;
+  display: block;
+}
+#gameover h1{
+  background: url(img/brokenshield.png) no-repeat center 20px;
+  padding-top: 150px;
   text-align: center;
-  font-family: sans-serif;
+  text-transform: uppercase;
+}
+#intro ul, #intro p, #gameover p {
+  width: 80%;
+  margin: 10px auto;
+}
+#intro p {
+  font-size: 16px;
+  margin: 20px auto;
+  text-align: center;
+}
+#intro h1 {
+  text-align: center;
+  font-size: 30px;
+  text-transform: uppercase;
+}
+#intro button, #gameover button, #characters button {
+  display: block;
+  width: 100%;
+  font-family: "Patua One", calibri, arial, sans-serif;
+  margin: 20px 0; 
+  font-size: 20px;
+  line-height: 30px;
+  border: none;
+  background: #e6f0a3; 
+  background: -moz-linear-gradient(top, #e6f0a3 0%, #d2e638 50%, #c3d825 51%, #dbf043 100%); 
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e6f0a3), color-stop(50%,#d2e638), color-stop(51%,#c3d825), color-stop(100%,#dbf043)); 
+  background: -webkit-linear-gradient(top, #e6f0a3 0%,#d2e638 50%,#c3d825 51%,#dbf043 100%); 
+  background: -o-linear-gradient(top, #e6f0a3 0%,#d2e638 50%,#c3d825 51%,#dbf043 100%); 
+  background: -ms-linear-gradient(top, #e6f0a3 0%,#d2e638 50%,#c3d825 51%,#dbf043 100%); 
+  background: linear-gradient(top, #e6f0a3 0%,#d2e638 50%,#c3d825 51%,#dbf043 100%); 
+  box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.7);
+  border-radius: 5px;
+}
+#intro button:hover, #intro button:focus, #gameover button:hover, #gameover button:focus {
+  box-shadow: 0 6px 5px -5px rgba(0, 0, 0, 0.7);
+}
+#player {
+  display: block;
+  margin: 5px auto;
+}
+.right, .left {
+  z-index: 10;
+  line-height: 50px;
+  width: 50px;
+  border: none;
+  border-radius: 5px;
+  font-size: 25px;
+  background: #9dd53a; 
+  background: -moz-linear-gradient(top, #9dd53a 0%, #a1d54f 50%, #80c217 51%, #7cbc0a 100%); 
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#9dd53a), color-stop(50%,#a1d54f), color-stop(51%,#80c217), color-stop(100%,#7cbc0a)); 
+  background: -webkit-linear-gradient(top, #9dd53a 0%,#a1d54f 50%,#80c217 51%,#7cbc0a 100%); 
+  background: -o-linear-gradient(top, #9dd53a 0%,#a1d54f 50%,#80c217 51%,#7cbc0a 100%); 
+  background: -ms-linear-gradient(top, #9dd53a 0%,#a1d54f 50%,#80c217 51%,#7cbc0a 100%); 
+  background: linear-gradient(top, #9dd53a 0%,#a1d54f 50%,#80c217 51%,#7cbc0a 100%); 
+}
+* { 
+  margin: 0;
+  padding: 0;
+}
+body,html{
+  height: 100%;
+  overflow: hidden;
+}
+footer, section, header, aside, figure {
+  display: block;
+}
+li {
+  list-style: none;
+}
+#container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.playing #container { 
+  cursor: none;
+}
+
+@media screen and (min-device-width: 700px) {
+  #container {
+    width: 40%;
+    min-width: 500px;
+    height: 90%;
+    margin: 0 auto;
+  }
+}
+#playfield, #gameover, #instructions, #intro {
+  position: absolute;
+  top: -900px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-transition: top 1s;
+  -moz-transition: top 1s;
+  -ms-transition: top 1s;
+  -o-transition: top 1s;
+  transition: top 1s;
+}
+#playfield.current, 
+#gameover.current, 
+#instructions.current, 
+#intro.current {
+  top: 0;
+  -webkit-transition: top 1s;
+  -moz-transition: top 1s;
+  -ms-transition: top 1s;
+  -o-transition: top 1s;
+  transition: top 1s;
+}
+#characters li.introdeck {
+  opacity: 0;
+  left: -9000px;
+  position: absolute;
+  -webkit-transition: opacity 1s;
+  -moz-transition: opacity 1s;
+  -ms-transition: opacity 1s;
+  -o-transition: opacity 1s;
+  transition: opacity 1s;
+}
+#characters .current, #characters .introdeck {
+  width: 80%;
+  margin: 5px auto;
+}
+#characters .current ul {
+  margin: 5px 0;
+}
+#characters .current li {
+  display: inline;
+  padding-right: 10px;
+}
+#characters li.current {
+  opacity: 1;
+  left: 0;
+  -webkit-transition: opacity 1s;
+  -moz-transition: opacity 1s;
+  -ms-transition: opacity 1s;
+  -o-transition: opacity 1s;
+  transition: opacity 1s;
+}
+
+
+.right {
+  display: block;
+  position: absolute;
+  right: 0;
+  bottom: 20px;
+}
+.left {
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 20px;
+}
+canvas {
+  width: 100%;
+  height: 100%;
+}
+#scoresinfo {
+  position: absolute;
+  width: 100%;
+  padding: 5px 0;
+  background: rgb(76,76,76); /* Old browsers */
+  background: -moz-linear-gradient(top, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 12%, rgba(102,102,102,1) 25%, rgba(71,71,71,1) 39%, rgba(44,44,44,1) 50%, rgba(0,0,0,1) 51%, rgba(17,17,17,1) 60%, rgba(43,43,43,1) 76%, rgba(28,28,28,1) 91%, rgba(19,19,19,1) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(76,76,76,1)), color-stop(12%,rgba(89,89,89,1)), color-stop(25%,rgba(102,102,102,1)), color-stop(39%,rgba(71,71,71,1)), color-stop(50%,rgba(44,44,44,1)), color-stop(51%,rgba(0,0,0,1)), color-stop(60%,rgba(17,17,17,1)), color-stop(76%,rgba(43,43,43,1)), color-stop(91%,rgba(28,28,28,1)), color-stop(100%,rgba(19,19,19,1))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, rgba(76,76,76,1) 0%,rgba(89,89,89,1) 12%,rgba(102,102,102,1) 25%,rgba(71,71,71,1) 39%,rgba(44,44,44,1) 50%,rgba(0,0,0,1) 51%,rgba(17,17,17,1) 60%,rgba(43,43,43,1) 76%,rgba(28,28,28,1) 91%,rgba(19,19,19,1) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, rgba(76,76,76,1) 0%,rgba(89,89,89,1) 12%,rgba(102,102,102,1) 25%,rgba(71,71,71,1) 39%,rgba(44,44,44,1) 50%,rgba(0,0,0,1) 51%,rgba(17,17,17,1) 60%,rgba(43,43,43,1) 76%,rgba(28,28,28,1) 91%,rgba(19,19,19,1) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, rgba(76,76,76,1) 0%,rgba(89,89,89,1) 12%,rgba(102,102,102,1) 25%,rgba(71,71,71,1) 39%,rgba(44,44,44,1) 50%,rgba(0,0,0,1) 51%,rgba(17,17,17,1) 60%,rgba(43,43,43,1) 76%,rgba(28,28,28,1) 91%,rgba(19,19,19,1) 100%); /* IE10+ */
+  background: linear-gradient(top, rgba(76,76,76,1) 0%,rgba(89,89,89,1) 12%,rgba(102,102,102,1) 25%,rgba(71,71,71,1) 39%,rgba(44,44,44,1) 50%,rgba(0,0,0,1) 51%,rgba(17,17,17,1) 60%,rgba(43,43,43,1) 76%,rgba(28,28,28,1) 91%,rgba(19,19,19,1) 100%);
+}
+#energy, #score {
+  position: relative;
+  color: #fff;
+  padding-left: 20px;
+}
+#energy output, #score output {
+  position: absolute;
+  right: 20px;
 }
 </style>
-  </body>
+</body>
 </html>
