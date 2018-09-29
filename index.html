@@ -6,10 +6,14 @@
   <meta type="description" content="HTML5 catcher is a simple game to catch falling elements. You can use the keyboard, move the mouse or tilt your phone or tablet to move left and right">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"> 
-  <link href='https://fonts.googleapis.com/css?family=Patua+One' rel='stylesheet' type='text/css'>
-<!--   <link rel="stylesheet" href="https://thewebrocks.com/demos/html5catcher/css/playingfield.css" type="text/css"> -->
-  <link rel="stylesheet" href="css/textstyles.css" type="text/css">
-<script src="js/jquery.mobile-1.4.5.min.js"></script>
+  <link href='http://fonts.googleapis.com/css?family=Patua+One' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="http://thewebrocks.com/demos/html5catcher/css/playingfield.css" type="text/css">
+  <link rel="stylesheet" href="http://thewebrocks.com/demos/html5catcher/css/textstyles.css" type="text/css">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+
+  <script type="text/javascript">
+    $.noConflict();
+  </script>
 </head>
 <body>
   <header><h1></h1></header>
@@ -17,7 +21,7 @@
 
   <section id="intro">
       <h1><span>HTML5 </span>Catcher</h1>
-      <p>****** A quick game catching all the HTML5 goodies. Mobile support</p>
+      <p>A quick game catching all the HTML5 goodies.</p>
       <ul>
         <li>Last score: <output></output></li>
         <li>High score: <output></output></li>
@@ -129,22 +133,73 @@
 </div>
 <footer>
 </footer>
+<!-- <script type="text/javascript">
+  
+
+  window.addEventListener('load', function(){
+ 
+    var touchsurface = document.getElementById('touchsurface'),
+        startX,
+        startY,
+        dist,
+        threshold = 150, //required min distance traveled to be considered swipe
+        allowedTime = 200, // maximum time allowed to travel that distance
+        elapsedTime,
+        startTime
+ 
+    function handleswipe(isrightswipe){
+      console.log('swipe called')
+        if (isrightswipe)
+            //touchsurface.innerHTML = 'Congrats, you\'ve made a <span style="color:red">right swipe!</span>';
+           onkeydown()
+        else{
+            //touchsurface.innerHTML = 'Condition for right swipe not met yet'
+            onkeyup();
+        }
+    }
+ 
+    touchsurface.addEventListener('touchstart', function(e){
+        touchsurface.innerHTML = ''
+        var touchobj = e.changedTouches[0]
+        dist = 0
+        startX = touchobj.pageX
+        startY = touchobj.pageY
+        startTime = new Date().getTime() // record time when finger first makes contact with surface
+        e.preventDefault()
+    }, false)
+ 
+    touchsurface.addEventListener('touchmove', function(e){
+        e.preventDefault() // prevent scrolling when inside DIV
+    }, false)
+ 
+    touchsurface.addEventListener('touchend', function(e){
+        var touchobj = e.changedTouches[0]
+        dist = touchobj.pageX - startX // get total dist traveled by finger while in contact with surface
+        elapsedTime = new Date().getTime() - startTime // get time elapsed
+        // check that elapsed time is within specified, horizontal dist traveled >= threshold, and vertical dist traveled <= 100
+        var swiperightBol = (elapsedTime <= allowedTime && dist >= threshold && Math.abs(touchobj.pageY - startY) <= 100)
+        handleswipe(swiperightBol)
+        e.preventDefault()
+    }, false)
+ 
+}, false) // end window.onload
+</script> -->
 
 <script type='text/javascript'>
 (function(){
 
 /* DOM elements */
-var container = $( '#container' ),
-field = $( '#playfield' ),
-player = $( '#player' ),
-intro = $( '#intro' ),
-instructions = $( '#instructions' ),
-leftbutton = $( '.left' ),
-rightbutton = $( '.right' ),
-scoredisplay = $( '#score output' ),
-energydisplay = $( '#energy output' ),
-canvas = $( 'canvas' ),
-over = $( '#gameover' ),
+var container = $$( '#container' ),
+field = $$( '#playfield' ),
+player = $$( '#player' ),
+intro = $$( '#intro' ),
+instructions = $$( '#instructions' ),
+leftbutton = $$( '.left' ),
+rightbutton = $$( '.right' ),
+scoredisplay = $$( '#score output' ),
+energydisplay = $$( '#energy output' ),
+canvas = $$( 'canvas' ),
+over = $$( '#gameover' ),
 overmsg = over.querySelector( '.message' ),
 characters = document.querySelectorAll( 'li.introdeck' ),
 c = canvas.getContext( '2d' ),
@@ -189,8 +244,8 @@ current.type = sprdata[ i ].getAttribute ('data-type');
 allsprites.push( current );
 }
 spritecount = allsprites.length;
-initsprites = +$( '#characters' ).getAttribute( 'data-countstart' );
-newsprite = +$( '#characters' ).getAttribute( 'data-newsprite' );
+initsprites = +$$( '#characters' ).getAttribute( 'data-countstart' );
+newsprite = +$$( '#characters' ).getAttribute( 'data-newsprite' );
 
 /* make game keyboard enabled */
 container.tabIndex = -1;
@@ -199,20 +254,28 @@ container.focus();
 /* Assign event handlers */
 container.addEventListener( 'keydown', onkeydown, false );
 container.addEventListener( 'keyup', onkeyup, false );
-container.addEventListener( 'touchstart', ontouchstart, false );
-container.addEventListener( 'touchend', ontouchend, false );
+// container.addEventListener( 'touchstart', ontouchstart, false );
+// container.addEventListener( 'touchend', ontouchend, false );
 container.addEventListener( 'click', onclick, false );
 container.addEventListener( 'mousemove', onmousemove, false );
+
+container.addEventListener('touchstart', handleTouchStart, false);        
+container.addEventListener('touchmove', handleTouchMove, false);
+
+
 window.addEventListener( 'deviceorientation', tilt, false );
-// $(function(){
-//    $( '#container' ).on("swipeleft",function(){
-//     onkeydown();
-//   });
-//   $( '#container' ).on("swipeRight",function(){
-//     onkeyup();
-//   });
+  
+// jQuery(function(){
+//   // Bind the swipeHandler callback function to the swipe event on div.box
+//   jQuery( '#container' ).on( "swipe", swipeHandler );
+ 
+//   // Callback function references the event target and adds the 'swipe' class to it
+//   function swipeHandler( event ){
+//     console.log('uyououuuuuuuuuuuuuuuu')
+//     jQuery( event.target ).addClass( "swipe" );
+//   }
 // });
-/* Get the game score, or preset it when there isn't any */debugger;
+/* Get the game score, or preset it when there isn't any */
 
 
 if( localStorage!=null && localStorage.html5catcher ) {
@@ -232,12 +295,11 @@ that don't work quite well :( For better mobile browsers,
 you can tilt the phone - Firefox for example.
 */
 if( 'ondeviceorientation' in window ) {
-$( '#androidbrowsersucks' ).style.display = 'none';
+$$( '#androidbrowsersucks' ).style.display = 'none';
 }
 
 };
 
-/* Event Handlers */
 
 /* Click handling */
 function onclick( ev ) {
@@ -264,11 +326,15 @@ else if ( ev.keyCode === 37 ) { leftdown = false; }
 
 /* Touch handling */
 function ontouchstart( ev ) {
+
+  console.log('touch start called');
 if ( gamestate === 'playing' ) { ev.preventDefault(); }
 if ( ev.target === rightbutton ) { rightdown = true; }
 else if ( ev.target === leftbutton ) { leftdown = true; }
 }
 function ontouchend( ev ) {
+
+  console.log('touch endd called');
 if ( gamestate === 'playing' ) { ev.preventDefault(); }
 if ( ev.target === rightbutton ) { rightdown = false; }
 else if ( ev.target === leftbutton ) { leftdown = false; }
@@ -283,7 +349,7 @@ if ( x > width-offset ) { x = width-offset; }
 }
 
 /* Mouse handling */
-function onmousemove ( ev ) {
+function onmousemove ( ev ) {console.log('****************&&&&&&&&&&')
 var mx = ev.clientX - container.offsetLeft;
 if ( mx < offset ) { mx = offset; }
 if ( mx > width-offset ) { mx = width-offset; }
@@ -380,11 +446,13 @@ levelincrease++;
 }
 
 /* position player*/
-if( rightdown ) { playerright(); }
-if( leftdown ) { playerleft(); }
+if( rightdown ) { fplayerright(); }
+if( leftdown ) { fplayerleft(); }
 
 c.save();
-c.translate( x-offset, playerY );
+//c.translate( x-offset, playerY );
+console.log('translete to '+badshah)
+c.translate( badshah, playerY );
 c.drawImage( player, 0, 0 );
 c.restore();
 
@@ -398,7 +466,7 @@ gameover();
 };
 
 /* action when left is activated */
-function playerleft() {
+function playerleft() {;
 x -= playerincrease;
 if (x < offset) { x = offset; }
 }
@@ -408,7 +476,17 @@ function playerright() {
 x += playerincrease;
 if (x > width - offset) { x = width - offset; }
 }
+/* action when left is activated */
+function fplayerleft() {
+x -= playerincrease;
+if (x < offset) { x = offset; console.log(width,offset)}
+}
 
+/* action when left is activated */
+function fplayerright() {
+x += playerincrease;
+if (x > width - offset) { x = width - offset; console.log(width,offset)}
+}
 /*
 Game over
 */
@@ -496,7 +574,7 @@ sprite.vy = rand( 1, 5 );
 };
 
 /* yeah, yeah... */
-function $( str ) {
+function $$( str ) {
 return document.querySelector( str );
 };
 
@@ -525,9 +603,78 @@ window.setTimeout( callback, 1000 / 60 );
 })();
 }
 
+
+/* Extra code */ 
+
+  
+
+var xDown = null;                                                        
+var yDown = null;
+
+function getTouches(evt) {
+  return evt.touches ||             // browser API
+         evt.originalEvent.touches; // jQuery
+}                                                     
+
+function handleTouchStart(evt) {                                         
+    xDown = getTouches(evt)[0].clientX;                                      
+    yDown = getTouches(evt)[0].clientY;                                      
+};                                                
+var badshah=0;
+function handleTouchMove(evt) {
+    if ( ! xDown || ! yDown ) {
+        return;
+    }
+
+    var xUp = evt.touches[0].clientX;                                    
+    var yUp = evt.touches[0].clientY;
+
+    var xDiff = xDown - xUp;
+    var yDiff = yDown - yUp;
+console.log( container.offsetLeft+'xup is '+xUp +' , width ');
+
+
+
+
+playerleft();
+    if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
+        if ( xDiff > 0 ) {
+            /* left swipe */ 
+            //ontouchstart(evt);
+            leftdown = true;
+            console.log('leftttttttttttttttttttttttttttttttttttt')
+            var mx = xDiff;
+            badshah = mx;
+        } else {
+            /* right swipe */
+            //ontouchstart(evt);
+            rightdown = true;
+            console.log('Rightttttttttttttttttttttttttttttttttttttttt')
+            var mx = xUp - container.offsetLeft;
+              badshah = mx;
+        }                       
+    } else {
+        if ( yDiff > 0 ) {
+            /* up swipe */ 
+        } else { 
+            /* down swipe */
+        }                                                                 
+    }
+    /* reset values */
+    xDown = null;
+    yDown = null;                                             
+};
+
+
+//////////
 /* off to the races */
 init();
 })();
+
+</script>
+
+<script type="text/javascript">
+  
 
 </script>
 <style type="text/css">
