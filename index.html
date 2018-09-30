@@ -123,8 +123,8 @@
   </section>
 
   <ul id="androidbrowsersucks">
-    <li><button class="left">Leftft </button></li>
-    <li><button class="right"> Rightt</button></li>
+    <li><button class="left"> L </button></li>
+    <li><button class="right"> R </button></li>
   </ul>
 </div>
 <footer>
@@ -222,7 +222,7 @@ that don't work quite well :( For better mobile browsers,
 you can tilt the phone - Firefox for example.
 */
 if( 'ondeviceorientation' in window ) {
-//$( '#androidbrowsersucks' ).style.display = 'none';
+$( '#androidbrowsersucks' ).style.display = 'block';
 }
 
 };
@@ -231,7 +231,6 @@ if( 'ondeviceorientation' in window ) {
 
 /* Click handling */
 function onclick( ev ) {
-  alert('xcalled 5');
 var t = ev.target;
 if ( gamestate === 'gameover' ) {
 if ( t.id === 'replay' ) { showintro(); }
@@ -245,26 +244,22 @@ ev.preventDefault();
 
 /* Keyboard handling */
 function onkeydown( ev ) {
-  alert('xcalled 1');
 if ( ev.keyCode === 39 ) { rightdown = true; }
 else if ( ev.keyCode === 37 ) { leftdown = true; }
 }
 function onkeyup( ev ) {
-  alert('xcalled 2');
 if ( ev.keyCode === 39 ) { rightdown = false; }
 else if ( ev.keyCode === 37 ) { leftdown = false; }
 }
 
 /* Touch handling */
 function ontouchstart( ev ) {
-  alert('xcalled 3');
   console.log('touch start');
 if ( gamestate === 'playing' ) { ev.preventDefault(); }
 if ( ev.target === rightbutton ) { rightdown = true; }
 else if ( ev.target === leftbutton ) { leftdown = true; }
 }
 function ontouchend( ev ) {
-  alert('xcalled 4');
   console.log('touch end');
 if ( gamestate === 'playing' ) { ev.preventDefault(); }
 if ( ev.target === rightbutton ) { rightdown = false; }
@@ -281,7 +276,6 @@ if ( x > width-offset ) { x = width-offset; }
 
 /* Mouse handling */
 function onmousemove ( ev ) {
-  alert('xcalled 6');
 var mx = ev.clientX - container.offsetLeft;
 if ( mx < offset ) { mx = offset; }
 if ( mx > width-offset ) { mx = width-offset; }
