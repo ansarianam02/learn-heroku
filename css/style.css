@@ -379,17 +379,15 @@ input::placeholder { color:#9b9b9b;font-size:0.8em }
 }
 .scoreinfoContainer {
   display:flex;
-  font-size: 20px;
   flex:2;
   padding: 0 3px 0 0px;   
     }
 .scoreinfoContainer div{ flex:1;position: relative;margin:0 5px;}
 
-div#scoresinfo{ display:flex; color: white !important;}
+div#scoresinfo{ display:flex; color: white !important;font-size: 0.8em}
 
 .nameHolder {
     padding: 0 0 0 12px;
-    font-size: 22px;
     flex:1
 }
 div#catchLeft{
