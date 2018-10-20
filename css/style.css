@@ -66,7 +66,7 @@
 .characters{
   font-size: 0.8em;
   letter-spacing: 0.7;
-  padding: 4em 0 0;
+  padding: 1em 0 0;
 }
 .characters .instruction-title{
  
@@ -453,4 +453,17 @@ span#finaltime::before{
    width:30px;
    left:-22px;
     top: 2px;
+}
+#finalreportcatch{
+    position:relative;
+}span#finalreportcatch::before {
+    content: '';
+    position: absolute;
+    background: url(../img/collect/catchIcon.png);
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 25px;
+    width: 30px;
+    left: 2.2em;
+    top: 0.2em;
 }
