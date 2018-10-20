@@ -26,7 +26,16 @@
         .report {
           position: absolute;
           top: 30%;
-          left: 42%;
+          left: 22%;
+          width: 62%;
+          display: flex;
+        }
+        .report > span {
+            flex: 2;
+        }
+        .report .totalCandyCatch{
+          text-align: right;
+          padding: 0 31px 0 0;
         }
         #gameover button{
           display: block;
@@ -95,7 +104,7 @@ h2 {font-size: 24px; margin-bottom: 10px;}
   display: block;
 }
 #gameover{
-  background-color:#443e3e8c;
+      background-color: #4a4a4a78
       color: #f5a623;
 }
 #gameover h1{
