@@ -325,8 +325,7 @@ canvas {
     width: 85%;
     background:white;
     box-shadow: inset 0px 1px 0px #f7e9e9;*/
-    padding:10px;
-    box-sizing: border-box;
+     box-sizing: border-box;
     height:80%;
 
 }
