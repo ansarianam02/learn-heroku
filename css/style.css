@@ -314,7 +314,7 @@ canvas {
 #energy, #score , #totalCatch ,#catchLeft,#timer{
   position: relative;
   color: #fff;
-  padding-left: 20px;
+  padding-left: 2em;
 }
 #energy output, #score output ,#catchLeft{
  /* position: absolute;
@@ -381,8 +381,9 @@ input::placeholder { color:#9b9b9b;font-size:0.8em }
   display:flex;
   flex:2;
   padding: 0 3px 0 0px;   
+  font-size: 0.9em;
     }
-.scoreinfoContainer div{ flex:1;position: relative;margin:0 5px;}
+.scoreinfoContainer div{ flex:1;position: relative;}
 
 div#scoresinfo{ display:flex; color: white !important;font-size: 0.8em}
 
@@ -394,10 +395,47 @@ div#catchLeft{
   padding-top: 1px;
 }
 div#totalCatch::before{
+    content: ''; 
+   position:absolute;
+   background:url('../img/collect/catchIcon.png');
+   background-repeat:no-repeat;
+   display:inline-block;
+   height:25px;
+   width:30px;
+   left:4px;
+    top: 2px;
    
 }
 div#catchLeft::before{
-   content:'';
+    content: '';
+    position:absolute;
+    background:url('../img/collect/totalIcon.png');
+    background-repeat:no-repeat;
+    display:inline-block;
+    height: 20px;
+    width: 20px;
+    left:5px;
+    top: -1px;
+}
+
+div#timer::before {
+  content:'';
+  position:absolute;
+  background:url('../img/collect/clockIcon.png');
+  background-repeat:no-repeat;
+  display:inline-block;
+  height: 20px;
+  width: 20px;
+  left: 5px;
+  top: 0px;
+  content:'';
+}
+span#finaltime{
+  margin-left: 32px;
+  position: relative;
+}
+span#finaltime::before{
+    content:'';
    position:absolute;
    background:url('../img/collect/finaltimer.png');
    background-repeat:no-repeat;
@@ -406,35 +444,4 @@ div#catchLeft::before{
    width:30px;
    left:-22px;
     top: 2px;
-
-}
-
-div#timer::before {
-   
-    content:'';
-   position:absolute;
-   background:url('../img/collect/clockIcon.png');
-   background-repeat:no-repeat;
-   display:inline-block;
-   height:25px;
-   width:30px;
-   left:-5px;
-    top: 2px;
-    content:'';
-}
-span#finaltime{
-  margin-left: 32px;
-  position: relative;
-}
-span#finaltime::before{
-  content: ''; 
-   position:absolute;
-   background:url('../img/collect/totalIcon.png');
-   background-repeat:no-repeat;
-   display:inline-block;
-   height:25px;
-   width:30px;
-   left:-5px;
-    top: 2px;
-    
 }
