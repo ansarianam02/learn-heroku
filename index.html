@@ -171,8 +171,8 @@
   </section>
 
   <ul id="androidbrowsersucks" style="display: none;">
-    <li><button class="left"> <img src="img/collect/left1.png" width="72" height="70"> </button></li>
-    <li><button class="right">  <img src="img/collect/right1.png" width="72" height="70" > </button></li>
+    <li><button class="left"></li>
+    <li><button class="right"> </li>
   </ul>
 </div>
 <footer>
@@ -322,13 +322,13 @@ function ontouchstart( ev ) {
   console.log('touch start');
 if ( gamestate === 'playing' ) { ev.preventDefault(); }
 if ( ev.target === rightbutton ) { rightdown = true; }
-else if ( ev.target === leftbutton ) { leftdown = true; }
+else if ( ev.target === leftbutton ) { console.log('righttttttt click');leftdown = true; }
 }
 function ontouchend( ev ) {
   console.log('touch end');
 if ( gamestate === 'playing' ) { ev.preventDefault(); }
 if ( ev.target === rightbutton ) { rightdown = false; }
-else if ( ev.target === leftbutton ) { leftdown = false; }
+else if ( ev.target === leftbutton ) { console.log('left click');leftdown = false; }
 }
 
 /* Orientation handling */
