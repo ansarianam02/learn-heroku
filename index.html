@@ -97,6 +97,11 @@
           <li><img src="img/collect/picture1-1.png" class="sprite" alt="Video" data-collision="energy:20" data-type="good"></li>
           <li><img src="img/collect/picture2-1.png" class="sprite" alt="Video" data-collision="energy:20" data-type="good"></li>
           <li><img src="img/collect/picture3-1.png" class="sprite" alt="Video" data-collision="energy:20" data-type="good"></li>
+          <li><img src="img/collect/picture1-1.png" class="sprite" alt="Video" data-collision="energy:20" data-type="good"></li>
+
+          <li><img src="img/collect/picture1-1.png" class="sprite" alt="Video" data-collision="energy:20" data-type="good"></li>
+          <li><img src="img/collect/picture2-1.png" class="sprite" alt="Video" data-collision="energy:20" data-type="good"></li>
+          <li><img src="img/collect/picture3-1.png" class="sprite" alt="Video" data-collision="energy:20" data-type="good"></li>
        </ul>
         <h2>The good components</h2>
         <p>Each are worth 10 energy points that you can win or lose.</p>
@@ -303,7 +308,7 @@ var element = document.getElementById("container");
 namedisplay.innerHTML = document.getElementById("playername").value || 'Guest';
     element.classList.remove("firstbg");
     
- chance=0,fps = 50,renderSpeed =1500 ; startgame(); }
+ chance=0,fps = 50,renderSpeed =1200 ; startgame(); }
 ev.preventDefault();
 }
 
@@ -478,8 +483,8 @@ if ( chance <= 10 ) {
 } else {
 gameover();
 }
-if (renderSpeed > 100)
-  renderSpeed=renderSpeed-0.5;
+if (renderSpeed > 200)
+  renderSpeed=renderSpeed-0.25;
 //console.log('speed is '+renderSpeed)
 }, renderSpeed/fps);
 
