@@ -345,6 +345,7 @@ canvas {
 .input-holder{
     position:relative;
 }
+::placeholder { color:#9b9b9b; }
 .input-holder label{
     position: absolute;
     top: 16px;
@@ -352,7 +353,7 @@ canvas {
 }
 
 .input-holder input{
-    padding: 1em 16px 1em 55px;
+    padding: 0.8em 16px 0.8em 55px;
     border-radius: 6px;
     /* text-align: center; */
     border: 1px solid #ffd87d;
