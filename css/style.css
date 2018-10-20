@@ -324,6 +324,9 @@ canvas {
   position: relative;
   color: #fff;
   padding-left: 2em;
+  text-align: right;
+  /* border: 1px solid; */
+  padding-right: 0.4em;
 }
 #energy output, #score output ,#catchLeft{
  /* position: absolute;
@@ -389,9 +392,9 @@ input::placeholder { color:#9b9b9b;font-size:0.8em }
 .scoreinfoContainer {
   display:flex;
   flex:2;
-  padding: 0 3px 0 0px;   
+  padding: 0 3px 0 0px;
   font-size: 0.9em;
-    }
+  }
 .scoreinfoContainer div{ flex:1;position: relative;}
 
 div#scoresinfo{ display:flex; color: white !important;font-size: 0.8em}
@@ -404,16 +407,15 @@ div#catchLeft{
   padding-top: 1px;
 }
 div#totalCatch::before{
-    content: ''; 
-   position:absolute;
-   background:url('../img/collect/catchIcon.png');
-   background-repeat:no-repeat;
-   display:inline-block;
-   height:25px;
-   width:30px;
-   left:4px;
+    content: '';
+    position:absolute;
+    background:url('../img/collect/catchIcon.png');
+    background-repeat:no-repeat;
+    display:inline-block;
+    height:25px;
+    width:30px;
+    left: 3em;
     top: 2px;
-   
 }
 div#catchLeft::before{
     content: '';
@@ -423,7 +425,7 @@ div#catchLeft::before{
     display:inline-block;
     height: 20px;
     width: 20px;
-    left:5px;
+    left: 1em;
     top: -1px;
 }
 
@@ -435,7 +437,7 @@ div#timer::before {
   display:inline-block;
   height: 20px;
   width: 20px;
-  left: 5px;
+  left: 2.5em;
   top: 0px;
   content:'';
 }
@@ -445,13 +447,13 @@ span#finaltime{
 }
 span#finaltime::before{
     content:'';
-   position:absolute;
-   background:url('../img/collect/finaltimer.png');
-   background-repeat:no-repeat;
-   display:inline-block;
-   height:25px;
-   width:30px;
-   left:-22px;
+    position:absolute;
+    background:url('../img/collect/finaltimer.png');
+    background-repeat:no-repeat;
+    display:inline-block;
+    height:25px;
+    width:30px;
+    left:-22px;
     top: 2px;
 }
 #finalreportcatch{
@@ -464,6 +466,6 @@ span#finaltime::before{
     display: inline-block;
     height: 25px;
     width: 30px;
-    left: 0.5em;
+    left: 0.9em;
     top: 0.2em;
 }
