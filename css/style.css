@@ -352,7 +352,7 @@ canvas {
 }
 
 .input-holder input{
-    padding: 20px 16px 20px 55px;
+    padding: 1em 16px 1em 55px;
     border-radius: 6px;
     /* text-align: center; */
     border: 1px solid #ffd87d;
