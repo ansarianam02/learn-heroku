@@ -464,6 +464,6 @@ span#finaltime::before{
     display: inline-block;
     height: 25px;
     width: 30px;
-    left: 2.2em;
+    left: 0.5em;
     top: 0.2em;
 }
