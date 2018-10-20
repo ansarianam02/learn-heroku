@@ -24,9 +24,9 @@
           left: 33%;
         }
         .report {
-            position: absolute;
-            top: 41%;
-            left: 42%;
+          position: absolute;
+          top: 30%;
+          left: 42%;
         }
         #gameover button{
           display: block;
@@ -37,10 +37,10 @@
           line-height: 14px;
           border-radius: 28px;
           color: #e74c3c;
-          background-color: #ffd87d;
           padding: 9px 0;
           border: none;
           box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+          background-color: #fecd38;
           text-transform: uppercase;
           letter-spacing: 1.2;
     
@@ -102,8 +102,8 @@ h2 {font-size: 24px; margin-bottom: 10px;}
    text-align: center;
     text-transform: uppercase;
     position: absolute;
-    left: 36%;
-    top: 25%;
+    left: 29%;
+    top: 18%;
     font-size: 22px;
 }
 #gameover header{
@@ -411,7 +411,7 @@ div#catchLeft::before{
 }
 
 div#timer::before {
-    
+   content: ''; 
    position:absolute;
    background:url('../img/collect/totalIcon.png');
    background-repeat:no-repeat;
