@@ -473,7 +473,7 @@ c.restore();
 /* when you still have energy, render next, else game over */
 scores.energy = Math.min( scores.energy, 100 );
 //console.log('scores energy is '+scores.energy)
-if ( scores.energy > 0 ) {
+if ( chance <= 10 ) {
   requestAnimationFrame( loop );;
 } else {
 gameover();
@@ -539,7 +539,7 @@ this.px += this.vx;
 this.py += this.vy;
 if ( ~~(this.py + 10) > playerY ) {
 if ( (x - offset) < this.px && this.px < (x + offset) ) {
-  //console.log('seeeeeeeee')
+ // console.log('ppppeeeeeeeee')
   this.py = -200;
   i = this.effects.length;
   while ( i-- ) {
@@ -554,7 +554,6 @@ if ( (x - offset) < this.px && this.px < (x + offset) ) {
 
 }
 if ( this.px > (width - this.offset) || this.px < this.offset ) {
-  
   this.vx = -this.vx;
 }
 if ( this.py > height + 100 ) {
@@ -562,19 +561,24 @@ if ( this.py > height + 100 ) {
 if(false){
     chance++;
    //set chance   
-    if(chance>=10)
+    if(chance>=100)
         scores.energy = 0;
         
   }else if( this.type === 'good' ) {
+    console.log('yyyyyyyyyyyyyyyyyy')
     chance++;
     catchLeftdisplay.innerHTML = chance;
    //set chance
-    if(chance>=10)
-        scores.energy = 0;
+ 
+    
    i = this.effects.length;
   while ( i-- ) {
      scores[ this.effects[ i ].effect ] -= +this.effects[ i ].value;
    }
+
+   if(chance>=100)
+        scores.energy = 0;
+
 }
 
 setspritedata( this );
