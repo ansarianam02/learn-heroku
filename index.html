@@ -148,9 +148,9 @@
 
   <section id="playfield">
     <div id="scoresinfo">
-     
+      <div id="nameHolder" class="nameHolder">John</div>
     <div class="scoreinfoContainer">
-         <div id="nameHolder" class="nameHolder">John</div>
+
        <div id="energy" style="display: none">Energy <output>100</output></div>
        <div id="score" style="display: none">Score <output></output></div>
         <div id="timer">  <output>0</output></div>
@@ -406,7 +406,7 @@ var doSomething = function()
 var endDate   = new Date();
 var seconds = (endDate.getTime() - startDate.getTime()) / 1000; 
 timerdisplay.innerHTML = parseInt(seconds);
-finalTimedisplay.innerHTML =  parseInt(seconds) +' sec';
+finalTimedisplay.innerHTML =  parseInt(seconds) + ' secs';
 }
 
 function startgame() { 
