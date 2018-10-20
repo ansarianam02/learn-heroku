@@ -394,33 +394,26 @@ div#catchLeft{
   padding-top: 1px;
 }
 div#totalCatch::before{
+   
+}
+div#catchLeft::before{
    content:'';
    position:absolute;
-   background:url('../img/collect/totalIcon.png');
+   background:url('../img/collect/clockIcon.png');
    background-repeat:no-repeat;
    display:inline-block;
    height:25px;
    width:30px;
    left:-5px;
     top: 2px;
-}
-div#catchLeft::before{
     content:'';
-   position:absolute;
-   background:url('../img/collect/catchIcon.png');
-   background-repeat:no-repeat;
-   display:inline-block;
-   height:25px;
-   width:30px;
-   left:-11px;
-    top: 2px;
 
 }
 
 div#timer::before {
-    content:'';
+    
    position:absolute;
-   background:url('../img/collect/clockIcon.png');
+   background:url('../img/collect/totalIcon.png');
    background-repeat:no-repeat;
    display:inline-block;
    height:25px;
