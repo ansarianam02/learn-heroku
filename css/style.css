@@ -399,6 +399,20 @@ div#totalCatch::before{
 div#catchLeft::before{
    content:'';
    position:absolute;
+   background:url('../img/collect/finaltimer.png');
+   background-repeat:no-repeat;
+   display:inline-block;
+   height:25px;
+   width:30px;
+   left:-22px;
+    top: 2px;
+
+}
+
+div#timer::before {
+   
+    content:'';
+   position:absolute;
    background:url('../img/collect/clockIcon.png');
    background-repeat:no-repeat;
    display:inline-block;
@@ -407,11 +421,13 @@ div#catchLeft::before{
    left:-5px;
     top: 2px;
     content:'';
-
 }
-
-div#timer::before {
-   content: ''; 
+span#finaltime{
+  margin-left: 32px;
+  position: relative;
+}
+span#finaltime::before{
+  content: ''; 
    position:absolute;
    background:url('../img/collect/totalIcon.png');
    background-repeat:no-repeat;
@@ -420,19 +436,5 @@ div#timer::before {
    width:30px;
    left:-5px;
     top: 2px;
-}
-span#finaltime{
-  margin-left: 32px;
-  position: relative;
-}
-span#finaltime::before{
-    content:'';
-   position:absolute;
-   background:url('../img/collect/finaltimer.png');
-   background-repeat:no-repeat;
-   display:inline-block;
-   height:25px;
-   width:30px;
-   left:-22px;
-    top: 2px;
+    
 }
