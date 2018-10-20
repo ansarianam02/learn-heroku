@@ -135,14 +135,13 @@ h2 {font-size: 24px; margin-bottom: 10px;}
 #intro button,  #characters button, .characters button {
   display: block;
   width: 100%;
-  margin: 20px 0; 
   font-size: 25px;
   font-weight: 550;
   line-height: 30px;
   border-radius: 28px;
   color:#e74c3c;
   background-color: #ffd87d;
-      padding: 10px 0;
+      padding: 0.4% 0;
     border: none;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
   text-transform: uppercase;
@@ -151,7 +150,7 @@ h2 {font-size: 24px; margin-bottom: 10px;}
 }
 #intro li.btn-list{
     position: absolute;
-    bottom: 0;
+    bottom: 5%;
     left: 6%;
     display: inline-block;
     width: 85%; 
