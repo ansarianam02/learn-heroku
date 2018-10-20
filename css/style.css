@@ -52,7 +52,7 @@
   background: #000;
 }
 .form-holder {
-    padding-top: 65px;
+    padding-top: 5%;
 }
 .characters{
   font-size: 16px;
@@ -65,7 +65,7 @@
     font-weight: 550;
 }
 .part2 ul.characters li{
-  margin:24px 0 !important;
+  margin:0.8em 0 !important;
   color:#4a4a4a;
 }
 .part2 ul.characters li.btn-list{
@@ -342,7 +342,7 @@ canvas {
 
 }
 .part2 ul li{
-    margin: 46px 0;
+    margin: 2.5em 0 0;
 }
 .input-holder{
     position:relative;
