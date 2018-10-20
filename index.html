@@ -303,7 +303,7 @@ var element = document.getElementById("container");
 namedisplay.innerHTML = document.getElementById("playername").value || 'Guest';
     element.classList.remove("firstbg");
     
- chance=0,fps = 50,renderSpeed =1000 ; startgame(); }
+ chance=0,fps = 50,renderSpeed =1500 ; startgame(); }
 ev.preventDefault();
 }
 
@@ -319,16 +319,16 @@ else if ( ev.keyCode === 37 ) { leftdown = false; }
 
 /* Touch handling */
 function ontouchstart( ev ) {
-  console.log('touch start');
+  //console.log('touch start');
 if ( gamestate === 'playing' ) { ev.preventDefault(); }
 if ( ev.target === rightbutton ) { rightdown = true; }
-else if ( ev.target === leftbutton ) { console.log('righttttttt click');leftdown = true; }
+else if ( ev.target === leftbutton ) { //console.log('righttttttt click');leftdown = true; }
 }
 function ontouchend( ev ) {
-  console.log('touch end');
+  //console.log('touch end');
 if ( gamestate === 'playing' ) { ev.preventDefault(); }
 if ( ev.target === rightbutton ) { rightdown = false; }
-else if ( ev.target === leftbutton ) { console.log('left click');leftdown = false; }
+else if ( ev.target === leftbutton ) { //console.log('left click');leftdown = false; }
 }
 
 /* Orientation handling */
@@ -472,16 +472,16 @@ c.restore();
 
 /* when you still have energy, render next, else game over */
 scores.energy = Math.min( scores.energy, 100 );
-//console.log('scores energy is '+scores.energy)
+////console.log('scores energy is '+scores.energy)
 if ( scores.energy > 0 ) {
   requestAnimationFrame( loop );;
 } else {
 gameover();
 }
 if (renderSpeed > 100)
-  renderSpeed=renderSpeed-1;
-//console.log('speed is '+renderSpeed)
-}, 1000/fps);
+  renderSpeed=renderSpeed-0.5;
+////console.log('speed is '+renderSpeed)
+}, renderSpeed/fps);
 
 };
 
@@ -539,7 +539,7 @@ this.px += this.vx;
 this.py += this.vy;
 if ( ~~(this.py + 10) > playerY ) {
 if ( (x - offset) < this.px && this.px < (x + offset) ) {
-  console.log('seeeeeeeee')
+  //console.log('seeeeeeeee')
   this.py = -200;
   i = this.effects.length;
   while ( i-- ) {
@@ -549,7 +549,7 @@ if ( (x - offset) < this.px && this.px < (x + offset) ) {
    totalCatchCount++;
   totalCatchdisplay.innerHTML = totalCatchCount;
   finalreportcatchdisplay.innerHTML = totalCatchCount;
-  //console.log('total count is '+totalCatchCount);
+  ////console.log('total count is '+totalCatchCount);
 }
 
 }
@@ -562,7 +562,7 @@ if ( this.py > height + 100 ) {
 if(false){
     chance++;
    //set chance   
-    if(chance>=2)
+    if(chance>=10)
         scores.energy = 0;
         
   }else if( this.type === 'good' ) {
@@ -589,7 +589,7 @@ c.restore();
 };
 
 
-console.log(scores)
+//console.log(scores)
 };
 
 function addsprite() {
