@@ -55,13 +55,14 @@
     padding-top: 5%;
 }
 .characters{
-  font-size: 16px;
-  letter-spacing: 1;
+  font-size: 0.8em;
+  letter-spacing: 0.7;
+  padding: 0.4em 0 0;
 }
 .characters .instruction-title{
  
     color: #e74c3c !important;
-    font-size: 23px;
+    font-size: 1em;
     font-weight: 550;
 }
 .part2 ul.characters li{
@@ -141,7 +142,7 @@ h2 {font-size: 24px; margin-bottom: 10px;}
   border-radius: 28px;
   color:#e74c3c;
   background-color: #ffd87d;
-      padding: 2% 0;
+      padding: 4% 0;
     border: none;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
   text-transform: uppercase;
