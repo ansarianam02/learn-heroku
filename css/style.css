@@ -5,13 +5,13 @@
         }
        .intro-banner img {
           height: 100%;
-          width: 76%;
+          width: 100%;
           display: inline-block;
        }
        .intro-banner{
           height: 137px;
           width: 100%;
-              padding: 0 0 0 38px;
+              padding: 0 0 0 0;
        }
        .part2 ul {         
          /* padding: 15% 0 0;*/
