@@ -319,16 +319,16 @@ else if ( ev.keyCode === 37 ) { leftdown = false; }
 
 /* Touch handling */
 function ontouchstart( ev ) {
-  //console.log('touch start');
+ // console.log('touch start');
 if ( gamestate === 'playing' ) { ev.preventDefault(); }
 if ( ev.target === rightbutton ) { rightdown = true; }
-else if ( ev.target === leftbutton ) { //console.log('righttttttt click');leftdown = true; }
+else if ( ev.target === leftbutton ) { console.log('righttttttt click');leftdown = true; }
 }
 function ontouchend( ev ) {
-  //console.log('touch end');
+ // console.log('touch end');
 if ( gamestate === 'playing' ) { ev.preventDefault(); }
 if ( ev.target === rightbutton ) { rightdown = false; }
-else if ( ev.target === leftbutton ) { //console.log('left click');leftdown = false; }
+else if ( ev.target === leftbutton ) { console.log('left click');leftdown = false; }
 }
 
 /* Orientation handling */
@@ -472,7 +472,7 @@ c.restore();
 
 /* when you still have energy, render next, else game over */
 scores.energy = Math.min( scores.energy, 100 );
-////console.log('scores energy is '+scores.energy)
+//console.log('scores energy is '+scores.energy)
 if ( scores.energy > 0 ) {
   requestAnimationFrame( loop );;
 } else {
@@ -480,7 +480,7 @@ gameover();
 }
 if (renderSpeed > 100)
   renderSpeed=renderSpeed-0.5;
-////console.log('speed is '+renderSpeed)
+//console.log('speed is '+renderSpeed)
 }, renderSpeed/fps);
 
 };
@@ -549,7 +549,7 @@ if ( (x - offset) < this.px && this.px < (x + offset) ) {
    totalCatchCount++;
   totalCatchdisplay.innerHTML = totalCatchCount;
   finalreportcatchdisplay.innerHTML = totalCatchCount;
-  ////console.log('total count is '+totalCatchCount);
+  //console.log('total count is '+totalCatchCount);
 }
 
 }
@@ -569,7 +569,7 @@ if(false){
     chance++;
     catchLeftdisplay.innerHTML = chance;
    //set chance
-    if(chance>=1)
+    if(chance>=10)
         scores.energy = 0;
    i = this.effects.length;
   while ( i-- ) {
