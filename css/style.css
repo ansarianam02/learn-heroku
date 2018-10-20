@@ -55,7 +55,7 @@
     padding-top: 65px;
 }
 .characters{
-  font-size: 18px;
+  font-size: 16px;
   letter-spacing: 1;
 }
 .characters .instruction-title{
@@ -65,7 +65,7 @@
     font-weight: 550;
 }
 .part2 ul.characters li{
-  margin:28px 0 !important;
+  margin:24px 0 !important;
   color:#4a4a4a;
 }
 .part2 ul.characters li.btn-list{
